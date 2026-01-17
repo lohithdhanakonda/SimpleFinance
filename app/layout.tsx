@@ -17,6 +17,22 @@ export default function RootLayout({
   return (
     <html>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Bharath Financial",
+              url: "https://bharathfinancial.co",
+              logo: "https://bharathfinancial.co/favicon.ico",
+              description:
+                "Bharath Financial provides free Indian financial calculators for SIP, FD, RD, EMI, PPF, CAGR, Gratuity and SWP.",
+              sameAs: [],
+            }),
+          }}
+        />
+
         <div className="min-h-screen flex flex-col">
           {/* HEADER */}
           <header className="py-3 sm:py-5 bg-gray-700 text-white px-4 sm:px-6">
