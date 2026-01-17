@@ -53,7 +53,7 @@ function calculateFD(
   principal: number,
   months: number,
   rate: number,
-  compounding = 4 // quarterly
+  compounding = 4
 ) {
   const t = months / 12;
   const r = rate / 100;
@@ -97,11 +97,13 @@ export default function FDForm() {
   const interestEarned = maturity - principal;
 
   return (
-    <div className="border rounded-lg p-6 space-y-5 bg-white">
+    <div className="bg-white border rounded-lg px-4 sm:px-6 py-6 space-y-5">
 
       {/* Deposit Amount */}
       <div>
-        <label className="block font-medium">Deposit Amount (₹)</label>
+        <label className="block text-sm font-medium mb-1">
+          Deposit Amount (₹)
+        </label>
         <input
           value={amountInput}
           onChange={(e) => {
@@ -110,19 +112,21 @@ export default function FDForm() {
               setAmountInput(formatCurrency(raw));
             }
           }}
-          className="border p-2 w-full"
+          className="border rounded-md p-2 w-full text-sm"
         />
       </div>
 
       {/* Bank */}
       <div>
-        <label className="block font-medium">Bank</label>
+        <label className="block text-sm font-medium mb-1">
+          Bank
+        </label>
 
         {!customBank ? (
           <select
             value={bank}
             onChange={(e) => setBank(e.target.value)}
-            className="border p-2 w-full"
+            className="border rounded-md p-2 w-full text-sm"
           >
             {Banks.map((b: any) => (
               <option key={b.code} value={b.code}>
@@ -135,11 +139,11 @@ export default function FDForm() {
             placeholder="Enter Bank Name"
             value={customBankName}
             onChange={(e) => setCustomBankName(e.target.value)}
-            className="border p-2 w-full"
+            className="border rounded-md p-2 w-full text-sm"
           />
         )}
 
-        <label className="flex items-center mt-2">
+        <label className="flex items-center mt-2 text-sm">
           <input
             type="checkbox"
             checked={customBank}
@@ -150,7 +154,7 @@ export default function FDForm() {
       </div>
 
       {/* Senior */}
-      <label className="flex items-center">
+      <label className="flex items-center text-sm">
         <input
           type="checkbox"
           checked={isSenior}
@@ -161,9 +165,11 @@ export default function FDForm() {
 
       {/* Tenure */}
       <div>
-        <label className="block font-medium">Tenure</label>
+        <label className="block text-sm font-medium mb-2">
+          Tenure
+        </label>
 
-        <div className="flex gap-4 mb-2">
+        <div className="flex flex-wrap gap-4 mb-2 text-sm">
           {["months", "days", "daterange"].map((m) => (
             <label key={m}>
               <input
@@ -181,29 +187,29 @@ export default function FDForm() {
             type="number"
             value={tenureValue}
             onChange={(e) => setTenureValue(Number(e.target.value))}
-            className="border p-2 w-full"
+            className="border rounded-md p-2 w-full text-sm"
           />
         ) : (
-          <div className="flex gap-4">
+          <div className="flex gap-3">
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="border p-2"
+              className="border rounded-md p-2 w-full text-sm"
             />
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="border p-2"
+              className="border rounded-md p-2 w-full text-sm"
             />
           </div>
         )}
       </div>
 
       {/* Interest Rate */}
-      <div>
-        <label className="block font-medium mb-1">
+      <div className="space-y-2">
+        <label className="block text-sm font-medium">
           Interest Rate (%)
         </label>
 
@@ -220,23 +226,23 @@ export default function FDForm() {
           step="0.05"
           value={rate}
           onChange={(e) => setRate(Number(e.target.value))}
-          className="border p-2 w-32 mt-2"
+          className="border rounded-md p-2 w-32 text-sm"
         />
       </div>
 
       {/* Result */}
-      <div className="border-t pt-4 text-sm">
+      <div className="border-t pt-4 text-sm space-y-1">
         <p>
           You invest ₹{formatCurrency(principal)} for {months} months in{" "}
           {customBank ? customBankName || "Custom Bank" : bank}
         </p>
         <p>
-          <strong>Interest Earned:</strong> ₹
-          {formatCurrency(Math.round(interestEarned))}
+          <strong>Interest Earned:</strong>{" "}
+          ₹{formatCurrency(Math.round(interestEarned))}
         </p>
         <p>
-          <strong>Maturity Amount:</strong> ₹
-          {formatCurrency(Math.round(maturity))}
+          <strong>Maturity Amount:</strong>{" "}
+          ₹{formatCurrency(Math.round(maturity))}
         </p>
       </div>
     </div>

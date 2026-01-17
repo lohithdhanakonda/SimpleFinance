@@ -34,34 +34,73 @@ export default function EMICalculator() {
   const result = calculateEMI(principal, rate, years);
 
   return (
-    <div className="max-w-4xl mx-auto p-6 space-y-6 bg-white border rounded-lg">
-      <h1 className="text-lg font-semibold">EMI Calculator</h1>
+    <div
+      className="mx-auto w-full max-w-md sm:max-w-lg lg:max-w-xl
+                 bg-white border rounded-lg
+                 px-4 sm:px-6 py-6 space-y-6"
+    >
+      {/* H1 */}
+      <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
+        EMI Calculator
+      </h1>
 
+      {/* Loan Amount */}
       <div>
-        <label>Loan Amount (₹)</label>
+        <label className="block text-sm font-medium mb-1">
+          Loan Amount (₹)
+        </label>
         <input
           value={amountInput}
           onChange={(e) =>
             setAmountInput(formatCurrency(parseNumber(e.target.value)))
           }
-          className="border p-2 w-full"
+          className="border rounded-md p-2 w-full text-sm"
         />
       </div>
 
-      <div>
-        <label>Interest Rate (%): {rate}</label>
-        <Slider min={5} max={20} step={0.1} value={rate} onChange={(v) => setRate(v as number)} />
+      {/* Interest Rate */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium">
+          Interest Rate (%):{" "}
+          <span className="font-semibold">{rate}</span>
+        </label>
+        <Slider
+          min={5}
+          max={20}
+          step={0.1}
+          value={rate}
+          onChange={(v) => setRate(v as number)}
+        />
       </div>
 
-      <div>
-        <label>Tenure: {years} years</label>
-        <Slider min={1} max={30} value={years} onChange={(v) => setYears(v as number)} />
+      {/* Tenure */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium">
+          Loan Tenure:{" "}
+          <span className="font-semibold">{years}</span> years
+        </label>
+        <Slider
+          min={1}
+          max={30}
+          value={years}
+          onChange={(v) => setYears(v as number)}
+        />
       </div>
 
-      <div className="border-t pt-4 text-sm">
-        <p><strong>Monthly EMI:</strong> ₹{formatCurrency(Math.round(result.emi))}</p>
-        <p><strong>Total Interest:</strong> ₹{formatCurrency(Math.round(result.interest))}</p>
-        <p><strong>Total Payment:</strong> ₹{formatCurrency(Math.round(result.totalPayment))}</p>
+      {/* Results */}
+      <div className="border-t pt-4 text-sm space-y-1">
+        <p>
+          <strong>Monthly EMI:</strong>{" "}
+          ₹{formatCurrency(Math.round(result.emi))}
+        </p>
+        <p>
+          <strong>Total Interest:</strong>{" "}
+          ₹{formatCurrency(Math.round(result.interest))}
+        </p>
+        <p>
+          <strong>Total Payment:</strong>{" "}
+          ₹{formatCurrency(Math.round(result.totalPayment))}
+        </p>
       </div>
     </div>
   );

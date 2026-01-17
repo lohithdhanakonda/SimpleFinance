@@ -17,79 +17,91 @@ export default function CAGRCalculator() {
       : 0;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6 bg-white border rounded-lg">
+    <div className="mx-auto w-full max-w-md sm:max-w-lg lg:max-w-xl 
+                    bg-white border rounded-lg 
+                    px-4 sm:px-6 py-6 space-y-6">
 
       {/* H1 */}
-      <h1 className="text-xl font-semibold">
+      <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         CAGR Calculator
       </h1>
 
       {/* Inputs */}
-      <div>
-        <label>Initial Value (₹)</label>
-        <input
-          type="number"
-          value={initial}
-          onChange={(e) => setInitial(Number(e.target.value))}
-          className="border p-2 w-full"
-        />
-      </div>
+      <div className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Initial Value (₹)
+          </label>
+          <input
+            type="number"
+            value={initial}
+            onChange={(e) => setInitial(Number(e.target.value))}
+            className="border rounded-md p-2 w-full text-sm"
+          />
+        </div>
 
-      <div>
-        <label>Final Value (₹)</label>
-        <input
-          type="number"
-          value={final}
-          onChange={(e) => setFinal(Number(e.target.value))}
-          className="border p-2 w-full"
-        />
-      </div>
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Final Value (₹)
+          </label>
+          <input
+            type="number"
+            value={final}
+            onChange={(e) => setFinal(Number(e.target.value))}
+            className="border rounded-md p-2 w-full text-sm"
+          />
+        </div>
 
-      <div>
-        <label>Investment Duration (Years)</label>
-        <input
-          type="number"
-          value={years}
-          onChange={(e) => setYears(Number(e.target.value))}
-          className="border p-2 w-full"
-        />
+        <div>
+          <label className="block text-sm font-medium mb-1">
+            Investment Duration (Years)
+          </label>
+          <input
+            type="number"
+            value={years}
+            onChange={(e) => setYears(Number(e.target.value))}
+            className="border rounded-md p-2 w-full text-sm"
+          />
+        </div>
       </div>
 
       {/* Result */}
       <div className="border-t pt-4">
-        <p>
-          <strong>CAGR:</strong> {cagr.toFixed(2)}% per year
+        <p className="text-sm">
+          <strong>CAGR:</strong>{" "}
+          <span className="text-base font-semibold">
+            {cagr.toFixed(2)}%
+          </span>{" "}
+          per year
         </p>
       </div>
 
       {/* Info box */}
-      <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-5 text-sm text-gray-700 space-y-4">
-        <h2 className="text-base font-semibold text-gray-900">
+      <div className="bg-gray-50 border border-gray-200 rounded-lg 
+                      p-4 sm:p-5 text-sm text-gray-700 space-y-3">
+        <h2 className="text-sm font-semibold text-gray-900">
           About CAGR
         </h2>
 
         <p>
           CAGR (Compound Annual Growth Rate) represents the annualized rate
-          at which an investment grows over a specific period, assuming the
-          growth happens evenly every year.
+          at which an investment grows over a specific period, assuming
+          consistent yearly growth.
         </p>
 
         <p>
-          CAGR is useful for comparing the long-term performance of different
-          investments such as stocks, mutual funds, or portfolios, even when
-          the investment duration varies.
+          It helps compare long-term performance of investments such as
+          stocks, mutual funds, or portfolios, even when durations differ.
         </p>
 
         <p>
-          CAGR does not reflect year-to-year fluctuations or volatility.
-          Actual returns may vary significantly each year due to market
-          conditions.
+          CAGR does not reflect year-to-year volatility. Actual returns may
+          vary due to market conditions.
         </p>
 
         <p>
-          This calculator provides an indicative CAGR value based on the
-          inputs provided. It does not account for intermediate cash flows
-          or withdrawals.
+          This calculator provides an indicative CAGR based on the values
+          entered and does not consider intermediate cash flows.
         </p>
       </div>
     </div>

@@ -14,9 +14,12 @@ export default function FDCalculatorClient() {
   const isSingle = forms.length === 1;
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-4">
-      {/* ✅ PAGE H1 (ONLY ONE) */}
-      <h1 className="text-xl font-semibold">Fixed Deposit (FD) Calculator</h1>
+    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 space-y-6">
+
+      {/* PAGE H1 */}
+      <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
+        Fixed Deposit (FD) Calculator
+      </h1>
 
       {/* Add comparison */}
       <div className="flex justify-end">
@@ -31,12 +34,12 @@ export default function FDCalculatorClient() {
       </div>
 
       {/* Rates disclaimer */}
-      <div className="text-sm text-gray-600 bg-gray-50 border rounded-md p-3">
-        <strong>Note on interest rates:</strong> Fixed Deposit interest rates
-        shown are indicative and based on publicly available information. Actual
-        rates may vary based on tenure, payout option, and bank policies. Use
-        the slider or input field to adjust the interest rate based on your
-        assumptions.
+      <div className="text-sm text-gray-600 bg-gray-50 border rounded-md p-4">
+        <strong>Note on interest rates:</strong>{" "}
+        Fixed Deposit interest rates shown are indicative and based on publicly
+        available information. Actual rates may vary depending on tenure,
+        compounding frequency, and bank policies. You can manually adjust the
+        interest rate using the slider or input field.
       </div>
 
       {/* Forms */}
@@ -48,55 +51,40 @@ export default function FDCalculatorClient() {
         }
       >
         {forms.map((id) => (
-          <div key={id} className={isSingle ? "w-full max-w-xl" : ""}>
+          <div
+            key={id}
+            className={isSingle ? "w-full max-w-lg" : ""}
+          >
             <FDForm />
           </div>
         ))}
       </div>
 
-      {/* SEO micro-content */}
-      <div className="mt-10 max-w-4xl mx-auto">
-        <div
-          className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4 text-sm text-gray-700"
-          style={{ padding: "15px", fontSize: "10px" }}
-        >
+      {/* Info / SEO Section */}
+      <div className="mt-10 mx-auto w-full max-w-4xl">
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-5 sm:p-6 space-y-4 text-sm text-gray-700">
           <h2 className="text-base font-semibold text-gray-900">
             About Fixed Deposits
           </h2>
 
-          <div>
-            <h3 className="font-medium text-gray-800">
-              What is a Fixed Deposit?
-            </h3>
-            <p className="mt-1">
-              A Fixed Deposit (FD) is a one-time investment option offered by
-              banks where a lump sum amount earns interest over a fixed tenure
-              at a predetermined rate.
-            </p>
-          </div>
+          <p>
+            A Fixed Deposit (FD) is a lump-sum investment option offered by banks
+            where money is deposited for a fixed tenure and earns interest at a
+            predetermined rate.
+          </p>
 
-          <div>
-            <h3 className="font-medium text-gray-800">
-              How is FD interest calculated?
-            </h3>
-            <p className="mt-1">
-              FD interest is generally compounded quarterly or annually
-              depending on the bank and payout option. The maturity amount
-              depends on the deposit amount, tenure, interest rate, and
-              compounding frequency.
-            </p>
-          </div>
+          <p>
+            Interest on fixed deposits is usually compounded quarterly or
+            annually, depending on the bank and payout option selected. The
+            maturity amount depends on the deposit amount, tenure, interest
+            rate, and compounding frequency.
+          </p>
 
-          <div>
-            <h3 className="font-medium text-gray-800">
-              Accuracy of this calculator
-            </h3>
-            <p className="mt-1">
-              This calculator provides indicative results for planning purposes.
-              Actual FD returns may differ based on bank-specific rules and
-              compounding methods.
-            </p>
-          </div>
+          <p>
+            This FD calculator provides indicative results for planning purposes.
+            Actual maturity values may differ based on bank-specific rules,
+            premature withdrawal conditions, and interest rate changes.
+          </p>
         </div>
       </div>
     </div>

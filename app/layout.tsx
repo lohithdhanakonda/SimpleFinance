@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next"
 import "./globals.css";
 import TextConstants from "./config/constants/textConstants";
 
@@ -39,7 +40,7 @@ export default function RootLayout({
 
           {/* MAIN CONTENT */}
           <main className="flex-1 p-6 main-content">{children}</main>
-
+          <Analytics />
           {/* FOOTER */}
           <footer className="py-3 bg-gray-700 text-center text-white text-sm px-6">
             <strong>Disclaimer:</strong> This site provides financial

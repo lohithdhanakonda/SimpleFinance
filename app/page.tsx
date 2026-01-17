@@ -11,6 +11,7 @@ import gratuity from "../public/assets/images/gratuity.png";
 import emi from "../public/assets/images/emi.png";
 import sip from "../public/assets/images/sip.png";
 import ppf from "../public/assets/images/ppf.png";
+import swp from "../public/assets/images/swp.png";
 
 export default function Home() {
   const menu = [
@@ -55,6 +56,12 @@ export default function Home() {
       name: "Gratuity Calculator",
       icon: gratuity,
       id: "gratuity",
+    },
+    {
+      navigate: "/calculators/swp-calculator",
+      name: "SWP Calculator",
+      icon: swp,
+      id: "swp",
     },
   ];
 

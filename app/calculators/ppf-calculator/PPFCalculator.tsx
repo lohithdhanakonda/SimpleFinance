@@ -4,6 +4,7 @@ import { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 
+/* ---------- Helpers ---------- */
 function formatCurrency(v: number) {
   return v.toLocaleString("en-IN");
 }
@@ -16,36 +17,62 @@ function calculatePPF(annual: number, rate: number, years: number) {
   return balance;
 }
 
+/* ---------- Component ---------- */
 export default function PPFCalculator() {
   const [annual, setAnnual] = useState(150000);
   const [rate, setRate] = useState(7.1);
-  const years = 15;
+  const [years, setYears] = useState(15);
 
   const maturity = calculatePPF(annual, rate, years);
   const invested = annual * years;
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6 bg-white border rounded-lg">
-      {/* H1 for SEO */}
-      <h1 className="text-xl font-semibold">PPF Calculator</h1>
+    <div
+      className="mx-auto w-full max-w-md sm:max-w-lg lg:max-w-xl
+                 bg-white border rounded-lg
+                 px-4 sm:px-6 py-6 space-y-6"
+    >
+      {/* H1 */}
+      <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
+        PPF Calculator
+      </h1>
 
       {/* Annual Contribution */}
       <div>
-        <label className="block font-medium">
+        <label className="block text-sm font-medium mb-1">
           Annual Contribution (₹)
         </label>
         <input
           type="number"
           value={annual}
           onChange={(e) => setAnnual(Number(e.target.value))}
-          className="border p-2 w-full"
+          className="border rounded-md p-2 w-full text-sm"
         />
       </div>
 
+      {/* Investment Duration */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium">
+          Investment Duration:{" "}
+          <span className="font-semibold">{years} years</span>
+        </label>
+        <Slider
+          min={15}
+          max={50}
+          step={1}
+          value={years}
+          onChange={(v) => setYears(v as number)}
+        />
+        <p className="text-xs text-gray-500">
+          Minimum lock-in period is 15 years. Extensions allowed thereafter.
+        </p>
+      </div>
+
       {/* Interest Rate */}
-      <div>
-        <label className="block font-medium">
-          Interest Rate (%): {rate}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium">
+          Interest Rate (%):{" "}
+          <span className="font-semibold">{rate}</span>
         </label>
         <Slider
           min={6}
@@ -68,28 +95,28 @@ export default function PPFCalculator() {
         </p>
       </div>
 
-      {/* Info / SEO micro-content */}
-      <div className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-5 text-sm text-gray-700 space-y-4">
-        <h2 className="text-base font-semibold text-gray-900">
+      {/* Info box */}
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 sm:p-5 space-y-4 text-sm text-gray-700">
+        <h2 className="text-sm font-semibold text-gray-900">
           About Public Provident Fund (PPF)
         </h2>
 
         <p>
-          Public Provident Fund (PPF) is a government-backed long-term
-          savings scheme in India that offers fixed returns and tax
-          benefits under Section 80C.
+          Public Provident Fund (PPF) is a government-backed long-term savings
+          scheme in India offering guaranteed returns and tax benefits under
+          Section 80C.
         </p>
 
         <p>
-          PPF has a lock-in period of 15 years, with interest compounded
-          annually. The interest rate is declared quarterly by the
-          Government of India.
+          PPF has a mandatory lock-in period of 15 years. After maturity, the
+          account can be extended in blocks of 5 years with or without further
+          contributions.
         </p>
 
         <p>
-          This calculator provides an indicative estimate assuming a
-          constant annual contribution and interest rate. Actual returns
-          may vary based on official rate revisions and contribution timing.
+          This calculator provides an indicative estimate assuming constant
+          annual contribution and interest rate. Actual returns may vary based
+          on official rate revisions.
         </p>
       </div>
     </div>

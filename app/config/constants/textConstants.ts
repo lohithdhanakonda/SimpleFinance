@@ -1,5 +1,5 @@
 const TextConstants = {
-  title: "Simple Finance",
+  title: "Bharath Financial",
   rdTitle: "Recurring Deposit Calculator",
 };
 export default TextConstants;

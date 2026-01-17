@@ -54,11 +54,10 @@ function calculateSIP({
     totalInvestment += sipAmount;
 
     if (stepUpEnabled && m % stepUpInterval === 0) {
-      if (stepUpType === "percent") {
-        sipAmount += (sipAmount * stepUpValue) / 100;
-      } else {
-        sipAmount += stepUpValue;
-      }
+      sipAmount +=
+        stepUpType === "percent"
+          ? (sipAmount * stepUpValue) / 100
+          : stepUpValue;
     }
   }
 
@@ -77,11 +76,11 @@ export default function SIPCalculatorClient() {
   const [expectedReturn, setExpectedReturn] = useState(12);
 
   const [stepUpEnabled, setStepUpEnabled] = useState(false);
-  const [stepUpType, setStepUpType] = useState<"percent" | "amount">("percent");
+  const [stepUpType, setStepUpType] =
+    useState<"percent" | "amount">("percent");
   const [stepUpValue, setStepUpValue] = useState(10);
-  const [stepUpFrequency, setStepUpFrequency] = useState<
-    "monthly" | "quarterly" | "half-yearly" | "yearly"
-  >("yearly");
+  const [stepUpFrequency, setStepUpFrequency] =
+    useState<"monthly" | "quarterly" | "half-yearly" | "yearly">("yearly");
 
   const monthlyAmount = parseNumber(monthlyInput);
 
@@ -96,26 +95,30 @@ export default function SIPCalculatorClient() {
   });
 
   return (
-    <div className="max-w-3xl mx-auto p-6 space-y-6 bg-white border rounded-lg">
-      {/* ✅ PAGE H1 */}
-      <h1 className="text-xl font-semibold">SIP & Step-Up SIP Calculator</h1>
+    <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 py-6 space-y-6 bg-white border rounded-lg">
+      {/* PAGE H1 */}
+      <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
+        SIP & Step-Up SIP Calculator
+      </h1>
 
       {/* Monthly SIP */}
       <div>
-        <label className="block font-medium">Monthly SIP Amount (₹)</label>
+        <label className="block text-sm font-medium mb-1">
+          Monthly SIP Amount (₹)
+        </label>
         <input
           value={monthlyInput}
           onChange={(e) => {
             const raw = parseNumber(e.target.value);
             if (!isNaN(raw)) setMonthlyInput(formatCurrency(raw));
           }}
-          className="border p-2 w-full"
+          className="border rounded-md p-2 w-full text-sm"
         />
       </div>
 
       {/* Investment Duration */}
       <div>
-        <label className="block font-medium">
+        <label className="block text-sm font-medium mb-1">
           Investment Duration: {years} years
         </label>
         <Slider
@@ -128,7 +131,7 @@ export default function SIPCalculatorClient() {
 
       {/* Expected Returns */}
       <div>
-        <label className="block font-medium">
+        <label className="block text-sm font-medium mb-1">
           Expected Annual Returns (%): {expectedReturn}%
         </label>
         <Slider
@@ -141,7 +144,7 @@ export default function SIPCalculatorClient() {
       </div>
 
       {/* Step-Up Toggle */}
-      <label className="flex items-center gap-2">
+      <label className="flex items-center gap-2 text-sm">
         <input
           type="checkbox"
           checked={stepUpEnabled}
@@ -152,28 +155,30 @@ export default function SIPCalculatorClient() {
 
       {/* Step-Up Options */}
       {stepUpEnabled && (
-        <div className="space-y-4 border p-4 rounded-md bg-gray-50">
-          <div className="flex gap-4">
-            <label>
+        <div className="space-y-4 border rounded-md bg-gray-50 p-4">
+          {/* Type */}
+          <div className="flex flex-wrap gap-4 text-sm">
+            <label className="flex items-center gap-1">
               <input
                 type="radio"
                 checked={stepUpType === "percent"}
                 onChange={() => setStepUpType("percent")}
-              />{" "}
+              />
               Percentage (%)
             </label>
-            <label>
+            <label className="flex items-center gap-1">
               <input
                 type="radio"
                 checked={stepUpType === "amount"}
                 onChange={() => setStepUpType("amount")}
-              />{" "}
+              />
               Fixed Amount (₹)
             </label>
           </div>
 
+          {/* Value */}
           <div>
-            <label className="block font-medium">
+            <label className="block text-sm font-medium mb-1">
               Step-Up Value {stepUpType === "percent" ? "(%)" : "(₹)"}
             </label>
             <Slider
@@ -185,12 +190,17 @@ export default function SIPCalculatorClient() {
             />
           </div>
 
+          {/* Frequency */}
           <div>
-            <label className="block font-medium">Step-Up Frequency</label>
+            <label className="block text-sm font-medium mb-1">
+              Step-Up Frequency
+            </label>
             <select
               value={stepUpFrequency}
-              onChange={(e) => setStepUpFrequency(e.target.value as any)}
-              className="border p-2 w-full"
+              onChange={(e) =>
+                setStepUpFrequency(e.target.value as any)
+              }
+              className="border rounded-md p-2 w-full text-sm"
             >
               <option value="monthly">Monthly</option>
               <option value="quarterly">Quarterly</option>
@@ -218,30 +228,26 @@ export default function SIPCalculatorClient() {
       </div>
 
       {/* Info box */}
-      <div
-        className="mt-6 bg-gray-50 border border-gray-200 rounded-lg p-5 text-sm text-gray-700 space-y-4"
-        style={{ padding: "15px", fontSize: "10px" }}
-      >
-        <h2 className="text-base font-semibold text-gray-900">
+      <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-sm text-gray-700 space-y-3">
+        <h2 className="text-sm font-semibold text-gray-900">
           About SIP and Step-Up SIP
         </h2>
 
         <p>
-          Systematic Investment Plan (SIP) allows investors to invest a fixed
-          amount regularly in mutual funds, helping build wealth through
-          disciplined investing and compounding.
+          A Systematic Investment Plan (SIP) helps investors build wealth by
+          investing a fixed amount regularly and benefiting from long-term
+          compounding.
         </p>
 
         <p>
-          Step-Up SIP increases the SIP amount periodically, usually in line
-          with income growth. This can significantly improve long-term returns
-          compared to a fixed SIP.
+          Step-Up SIP increases the investment amount periodically, usually in
+          line with income growth, significantly improving long-term wealth
+          creation.
         </p>
 
         <p>
-          This calculator provides indicative estimates based on assumed
-          constant returns. Actual mutual fund returns may vary due to market
-          fluctuations.
+          Returns shown are indicative and based on assumed constant returns.
+          Actual mutual fund performance may vary due to market conditions.
         </p>
       </div>
     </div>

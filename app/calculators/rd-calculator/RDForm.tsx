@@ -27,9 +27,8 @@ function monthsFromInput(
   if (mode === "daterange" && startDate && endDate) {
     const start = new Date(startDate);
     const end = new Date(endDate);
-    const diffDays = Math.floor(
-      (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24)
-    );
+    const diffDays =
+      (end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24);
     return Math.floor(diffDays / 30);
   }
   return 0;
@@ -88,44 +87,40 @@ export default function RDForm() {
     endDate
   );
 
-  // Suggest rate on bank / tenure change
   useEffect(() => {
     if (customBank) return;
-
-    const suggested = getSuggestedRate(bank, months, isSenior);
-    setRate(suggested);
+    setRate(getSuggestedRate(bank, months, isSenior));
   }, [bank, months, isSenior, customBank]);
 
   const maturity = calculateRD(monthly, months, rate);
   const totalInvestment = monthly * months;
 
   return (
-    <div className="border rounded-lg p-6 space-y-5 bg-white">
-
+    <div className="bg-white border rounded-lg px-4 sm:px-6 py-6 space-y-5">
       {/* Monthly Amount */}
       <div>
-        <label className="block font-medium">Monthly Amount (₹)</label>
+        <label className="block text-sm font-medium mb-1">
+          Monthly Amount (₹)
+        </label>
         <input
           value={monthlyInput}
           onChange={(e) => {
             const raw = parseNumber(e.target.value);
-            if (!isNaN(raw)) {
-              setMonthlyInput(formatCurrency(raw));
-            }
+            if (!isNaN(raw)) setMonthlyInput(formatCurrency(raw));
           }}
-          className="border p-2 w-full"
+          className="border rounded-md p-2 w-full text-sm"
         />
       </div>
 
-      {/* Bank / Custom Bank */}
+      {/* Bank */}
       <div>
-        <label className="block font-medium">Bank</label>
+        <label className="block text-sm font-medium mb-1">Bank</label>
 
         {!customBank ? (
           <select
             value={bank}
             onChange={(e) => setBank(e.target.value)}
-            className="border p-2 w-full"
+            className="border rounded-md p-2 w-full text-sm"
           >
             {Banks.map((b: any) => (
               <option key={b.code} value={b.code}>
@@ -138,42 +133,42 @@ export default function RDForm() {
             placeholder="Enter Bank Name"
             value={customBankName}
             onChange={(e) => setCustomBankName(e.target.value)}
-            className="border p-2 w-full"
+            className="border rounded-md p-2 w-full text-sm"
           />
         )}
 
-        <label className="flex items-center mt-2">
+        <label className="flex items-center gap-2 mt-2 text-sm">
           <input
             type="checkbox"
             checked={customBank}
             onChange={() => setCustomBank(!customBank)}
           />
-          <span className="ml-2">Use custom bank</span>
+          Use custom bank
         </label>
       </div>
 
-      {/* Senior Citizen */}
-      <label className="flex items-center">
+      {/* Senior */}
+      <label className="flex items-center gap-2 text-sm">
         <input
           type="checkbox"
           checked={isSenior}
           onChange={() => setIsSenior(!isSenior)}
         />
-        <span className="ml-2">Senior Citizen</span>
+        Senior Citizen
       </label>
 
       {/* Tenure */}
       <div>
-        <label className="block font-medium">Tenure</label>
+        <label className="block text-sm font-medium mb-1">Tenure</label>
 
-        <div className="flex gap-4 mb-2">
+        <div className="flex flex-wrap gap-4 mb-2 text-sm">
           {["months", "days", "daterange"].map((m) => (
-            <label key={m}>
+            <label key={m} className="flex items-center gap-1">
               <input
                 type="radio"
                 checked={tenureMode === m}
                 onChange={() => setTenureMode(m as any)}
-              />{" "}
+              />
               {m}
             </label>
           ))}
@@ -184,21 +179,21 @@ export default function RDForm() {
             type="number"
             value={tenureValue}
             onChange={(e) => setTenureValue(Number(e.target.value))}
-            className="border p-2 w-full"
+            className="border rounded-md p-2 w-full text-sm"
           />
         ) : (
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-3">
             <input
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="border p-2"
+              className="border rounded-md p-2 text-sm w-full"
             />
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="border p-2"
+              className="border rounded-md p-2 text-sm w-full"
             />
           </div>
         )}
@@ -206,7 +201,7 @@ export default function RDForm() {
 
       {/* Interest Rate */}
       <div>
-        <label className="block font-medium mb-1">
+        <label className="block text-sm font-medium mb-1">
           Interest Rate (%)
         </label>
 
@@ -223,12 +218,12 @@ export default function RDForm() {
           step="0.05"
           value={rate}
           onChange={(e) => setRate(Number(e.target.value))}
-          className="border p-2 w-32 mt-2"
+          className="border rounded-md p-2 w-32 mt-2 text-sm"
         />
       </div>
 
       {/* Result */}
-      <div className="border-t pt-4 text-sm">
+      <div className="border-t pt-4 text-sm space-y-1">
         <p>
           You invest ₹{formatCurrency(monthly)} per month for {months} months in{" "}
           {customBank ? customBankName || "Custom Bank" : bank}
@@ -245,4 +240,3 @@ export default function RDForm() {
     </div>
   );
 }
-

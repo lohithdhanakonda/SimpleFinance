@@ -14,9 +14,9 @@ export default function RDCalculatorClient() {
   const isSingle = forms.length === 1;
 
   return (
-    <div className="max-w-7xl mx-auto p-6 space-y-4">
-      {/* ✅ PAGE H1 */}
-      <h1 className="text-xl font-semibold">
+    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-6 space-y-6">
+      {/* PAGE H1 */}
+      <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         Recurring Deposit (RD) Calculator
       </h1>
 
@@ -33,11 +33,11 @@ export default function RDCalculatorClient() {
       </div>
 
       {/* Rates disclaimer */}
-      <div className="text-sm text-gray-600 bg-gray-50 border rounded-md p-3">
+      <div className="text-xs sm:text-sm text-gray-600 bg-gray-50 border rounded-md p-3">
         <strong>Note on interest rates:</strong> Interest rates shown are
         indicative and based on publicly available information. Rates may change
-        over time or vary across banks and branches. You can use the slider or
-        input field to adjust the interest rate based on your assumptions.
+        over time or vary across banks and branches. You can adjust the interest
+        rate using the slider or input field.
       </div>
 
       {/* Forms */}
@@ -55,12 +55,9 @@ export default function RDCalculatorClient() {
         ))}
       </div>
 
-      {/* ✅ Info box (plain style, SEO-safe) */}
-      <div
-        className="mt-8 max-w-4xl mx-auto bg-gray-50 border border-gray-200 rounded-lg p-5 text-sm text-gray-700 space-y-4"
-        style={{ padding: "15px", fontSize: "10px" }}
-      >
-        <h2 className="text-base font-semibold text-gray-900">
+      {/* Info box */}
+      <div className="mx-auto w-full max-w-4xl bg-gray-50 border border-gray-200 rounded-lg p-4 sm:p-5 space-y-4 text-sm text-gray-700">
+        <h2 className="text-sm sm:text-base font-semibold text-gray-900">
           About Recurring Deposits
         </h2>
 
@@ -80,9 +77,9 @@ export default function RDCalculatorClient() {
             How is RD maturity calculated?
           </h3>
           <p className="mt-1">
-            RD maturity depends on the monthly deposit amount, tenure, interest
-            rate, and compounding frequency. Each monthly deposit earns interest
-            for a different duration until maturity.
+            Each monthly deposit earns interest for a different duration until
+            maturity. The final amount depends on the deposit amount, tenure,
+            interest rate, and compounding frequency.
           </p>
         </div>
 
@@ -92,8 +89,8 @@ export default function RDCalculatorClient() {
           </h3>
           <p className="mt-1">
             This calculator provides indicative results for planning purposes.
-            Actual RD returns may differ based on bank-specific rules and
-            compounding methods.
+            Actual RD returns may vary based on bank policies and compounding
+            rules.
           </p>
         </div>
       </div>
