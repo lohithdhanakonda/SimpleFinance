@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import InternalCalculatorLinks from "@/app/components/InternalCalculatorLinks";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 /* ---------- Helpers ---------- */
 
@@ -76,11 +78,11 @@ export default function SIPCalculatorClient() {
   const [expectedReturn, setExpectedReturn] = useState(12);
 
   const [stepUpEnabled, setStepUpEnabled] = useState(false);
-  const [stepUpType, setStepUpType] =
-    useState<"percent" | "amount">("percent");
+  const [stepUpType, setStepUpType] = useState<"percent" | "amount">("percent");
   const [stepUpValue, setStepUpValue] = useState(10);
-  const [stepUpFrequency, setStepUpFrequency] =
-    useState<"monthly" | "quarterly" | "half-yearly" | "yearly">("yearly");
+  const [stepUpFrequency, setStepUpFrequency] = useState<
+    "monthly" | "quarterly" | "half-yearly" | "yearly"
+  >("yearly");
 
   const monthlyAmount = parseNumber(monthlyInput);
 
@@ -96,6 +98,12 @@ export default function SIPCalculatorClient() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 sm:px-6 py-6 space-y-6 bg-white border rounded-lg">
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "SIP Calculator" },
+        ]}
+      />
       {/* PAGE H1 */}
       <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         SIP & Step-Up SIP Calculator
@@ -197,9 +205,7 @@ export default function SIPCalculatorClient() {
             </label>
             <select
               value={stepUpFrequency}
-              onChange={(e) =>
-                setStepUpFrequency(e.target.value as any)
-              }
+              onChange={(e) => setStepUpFrequency(e.target.value as any)}
               className="border rounded-md p-2 w-full text-sm"
             >
               <option value="monthly">Monthly</option>
@@ -250,6 +256,16 @@ export default function SIPCalculatorClient() {
           Actual mutual fund performance may vary due to market conditions.
         </p>
       </div>
+      <InternalCalculatorLinks
+        links={[
+          { href: "/calculators/swp-calculator", label: "SWP Calculator" },
+          { href: "/calculators/cagr-calculator", label: "CAGR Calculator" },
+          {
+            href: "/calculators/rd-calculator",
+            label: "Recurring Deposit Calculator",
+          },
+        ]}
+      />
     </div>
   );
 }

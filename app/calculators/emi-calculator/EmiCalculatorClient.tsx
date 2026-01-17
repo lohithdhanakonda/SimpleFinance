@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import InternalCalculatorLinks from "@/app/components/InternalCalculatorLinks";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 function formatCurrency(v: number) {
   return v.toLocaleString("en-IN");
@@ -39,6 +41,9 @@ export default function EMICalculator() {
                  bg-white border rounded-lg
                  px-4 sm:px-6 py-6 space-y-6"
     >
+      <Breadcrumbs
+        items={[{ label: "Home", href: "/" }, { label: "EMI Calculator" }]}
+      />
       {/* H1 */}
       <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         EMI Calculator
@@ -61,8 +66,7 @@ export default function EMICalculator() {
       {/* Interest Rate */}
       <div className="space-y-2">
         <label className="block text-sm font-medium">
-          Interest Rate (%):{" "}
-          <span className="font-semibold">{rate}</span>
+          Interest Rate (%): <span className="font-semibold">{rate}</span>
         </label>
         <Slider
           min={5}
@@ -76,8 +80,7 @@ export default function EMICalculator() {
       {/* Tenure */}
       <div className="space-y-2">
         <label className="block text-sm font-medium">
-          Loan Tenure:{" "}
-          <span className="font-semibold">{years}</span> years
+          Loan Tenure: <span className="font-semibold">{years}</span> years
         </label>
         <Slider
           min={1}
@@ -90,18 +93,27 @@ export default function EMICalculator() {
       {/* Results */}
       <div className="border-t pt-4 text-sm space-y-1">
         <p>
-          <strong>Monthly EMI:</strong>{" "}
-          ₹{formatCurrency(Math.round(result.emi))}
+          <strong>Monthly EMI:</strong> ₹
+          {formatCurrency(Math.round(result.emi))}
         </p>
         <p>
-          <strong>Total Interest:</strong>{" "}
-          ₹{formatCurrency(Math.round(result.interest))}
+          <strong>Total Interest:</strong> ₹
+          {formatCurrency(Math.round(result.interest))}
         </p>
         <p>
-          <strong>Total Payment:</strong>{" "}
-          ₹{formatCurrency(Math.round(result.totalPayment))}
+          <strong>Total Payment:</strong> ₹
+          {formatCurrency(Math.round(result.totalPayment))}
         </p>
       </div>
+      <InternalCalculatorLinks
+        links={[
+          { href: "/calculators/sip-calculator", label: "SIP Calculator" },
+          {
+            href: "/calculators/fd-calculator",
+            label: "Fixed Deposit Calculator",
+          },
+        ]}
+      />
     </div>
   );
 }

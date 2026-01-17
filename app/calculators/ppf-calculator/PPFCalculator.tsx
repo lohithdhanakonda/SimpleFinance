@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 /* ---------- Helpers ---------- */
 function formatCurrency(v: number) {
@@ -32,6 +33,9 @@ export default function PPFCalculator() {
                  bg-white border rounded-lg
                  px-4 sm:px-6 py-6 space-y-6"
     >
+      <Breadcrumbs
+        items={[{ label: "Home", href: "/" }, { label: "PPF Calculator" }]}
+      />
       {/* H1 */}
       <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         PPF Calculator
@@ -71,8 +75,7 @@ export default function PPFCalculator() {
       {/* Interest Rate */}
       <div className="space-y-2">
         <label className="block text-sm font-medium">
-          Interest Rate (%):{" "}
-          <span className="font-semibold">{rate}</span>
+          Interest Rate (%): <span className="font-semibold">{rate}</span>
         </label>
         <Slider
           min={6}
@@ -86,12 +89,11 @@ export default function PPFCalculator() {
       {/* Result */}
       <div className="border-t pt-4 text-sm space-y-1">
         <p>
-          <strong>Total Invested:</strong>{" "}
-          ₹{formatCurrency(invested)}
+          <strong>Total Invested:</strong> ₹{formatCurrency(invested)}
         </p>
         <p>
-          <strong>Maturity Amount:</strong>{" "}
-          ₹{formatCurrency(Math.round(maturity))}
+          <strong>Maturity Amount:</strong> ₹
+          {formatCurrency(Math.round(maturity))}
         </p>
       </div>
 

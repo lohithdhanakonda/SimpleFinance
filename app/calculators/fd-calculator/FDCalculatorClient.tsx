@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import InternalCalculatorLinks from "@/app/components/InternalCalculatorLinks";
 import FDForm from "./FDForm";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 export default function FDCalculatorClient() {
   const [forms, setForms] = useState<number[]>([0]);
@@ -15,7 +17,9 @@ export default function FDCalculatorClient() {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 space-y-6">
-
+      <Breadcrumbs
+        items={[{ label: "Home", href: "/" }, { label: "FD Calculator" }]}
+      />
       {/* PAGE H1 */}
       <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         Fixed Deposit (FD) Calculator
@@ -35,11 +39,11 @@ export default function FDCalculatorClient() {
 
       {/* Rates disclaimer */}
       <div className="text-sm text-gray-600 bg-gray-50 border rounded-md p-4">
-        <strong>Note on interest rates:</strong>{" "}
-        Fixed Deposit interest rates shown are indicative and based on publicly
-        available information. Actual rates may vary depending on tenure,
-        compounding frequency, and bank policies. You can manually adjust the
-        interest rate using the slider or input field.
+        <strong>Note on interest rates:</strong> Fixed Deposit interest rates
+        shown are indicative and based on publicly available information. Actual
+        rates may vary depending on tenure, compounding frequency, and bank
+        policies. You can manually adjust the interest rate using the slider or
+        input field.
       </div>
 
       {/* Forms */}
@@ -51,10 +55,7 @@ export default function FDCalculatorClient() {
         }
       >
         {forms.map((id) => (
-          <div
-            key={id}
-            className={isSingle ? "w-full max-w-lg" : ""}
-          >
+          <div key={id} className={isSingle ? "w-full max-w-lg" : ""}>
             <FDForm />
           </div>
         ))}
@@ -68,9 +69,9 @@ export default function FDCalculatorClient() {
           </h2>
 
           <p>
-            A Fixed Deposit (FD) is a lump-sum investment option offered by banks
-            where money is deposited for a fixed tenure and earns interest at a
-            predetermined rate.
+            A Fixed Deposit (FD) is a lump-sum investment option offered by
+            banks where money is deposited for a fixed tenure and earns interest
+            at a predetermined rate.
           </p>
 
           <p>
@@ -81,12 +82,22 @@ export default function FDCalculatorClient() {
           </p>
 
           <p>
-            This FD calculator provides indicative results for planning purposes.
-            Actual maturity values may differ based on bank-specific rules,
-            premature withdrawal conditions, and interest rate changes.
+            This FD calculator provides indicative results for planning
+            purposes. Actual maturity values may differ based on bank-specific
+            rules, premature withdrawal conditions, and interest rate changes.
           </p>
         </div>
       </div>
+      <InternalCalculatorLinks
+        links={[
+          {
+            href: "/calculators/rd-calculator",
+            label: "Recurring Deposit Calculator",
+          },
+          { href: "/calculators/ppf-calculator", label: "PPF Calculator" },
+          { href: "/calculators/cagr-calculator", label: "CAGR Calculator" },
+        ]}
+      />
     </div>
   );
 }

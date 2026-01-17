@@ -9,7 +9,6 @@ export const metadata: Metadata = {
     "Free Indian financial calculators for SIP, FD, RD, EMI, PPF, CAGR, Gratuity and more.",
 };
 
-
 export default function RootLayout({
   children,
 }: {
@@ -32,10 +31,26 @@ export default function RootLayout({
           <main className="flex-1 p-6 main-content">{children}</main>
           <Analytics />
           {/* FOOTER */}
-          <footer className="py-3 bg-gray-700 text-center text-white text-sm px-6">
-            <strong>Disclaimer:</strong> This site provides financial
-            calculators for understanding and planning. Results are indicative.
-            Please verify details with official sources before acting.
+          <footer className="bg-gray-700 text-white text-sm px-6 py-4">
+            <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              {/* Disclaimer */}
+              <p className="text-center sm:text-left">
+                <strong>Disclaimer:</strong> This site provides financial
+                calculators for understanding and planning. Results are
+                indicative. Please verify details with official sources before
+                acting.
+              </p>
+
+              {/* Footer links */}
+              <div className="flex justify-center sm:justify-end gap-4">
+                <Link href="/about" className="underline hover:opacity-80">
+                  About
+                </Link>
+                <Link href="/contact" className="underline hover:opacity-80">
+                  Contact
+                </Link>
+              </div>
+            </div>
           </footer>
         </div>
       </body>

@@ -1,5 +1,6 @@
 "use client";
 
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 import { useState } from "react";
 
 /* ---------- Helpers ---------- */
@@ -20,6 +21,9 @@ export default function GratuityCalculatorClient() {
                  bg-white border rounded-lg
                  px-4 sm:px-6 py-6 space-y-6"
     >
+      <Breadcrumbs
+        items={[{ label: "Home", href: "/" }, { label: "Gratuity Calculator" }]}
+      />
       {/* H1 */}
       <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         Gratuity Calculator
@@ -54,8 +58,8 @@ export default function GratuityCalculatorClient() {
       {/* Result */}
       <div className="border-t pt-4 text-sm">
         <p>
-          <strong>Estimated Gratuity Amount:</strong>{" "}
-          ₹{formatCurrency(Math.round(gratuity))}
+          <strong>Estimated Gratuity Amount:</strong> ₹
+          {formatCurrency(Math.round(gratuity))}
         </p>
       </div>
 
@@ -66,9 +70,9 @@ export default function GratuityCalculatorClient() {
         </h2>
 
         <p>
-          Gratuity is a lump sum amount paid by an employer to an employee
-          as a recognition of long-term service, governed by the Payment of
-          Gratuity Act, 1972.
+          Gratuity is a lump sum amount paid by an employer to an employee as a
+          recognition of long-term service, governed by the Payment of Gratuity
+          Act, 1972.
         </p>
 
         <p>
@@ -81,8 +85,8 @@ export default function GratuityCalculatorClient() {
 
         <p>
           This calculator provides an indicative estimate. Actual gratuity
-          payable may vary based on eligibility criteria, statutory limits,
-          and employer-specific policies.
+          payable may vary based on eligibility criteria, statutory limits, and
+          employer-specific policies.
         </p>
       </div>
     </div>

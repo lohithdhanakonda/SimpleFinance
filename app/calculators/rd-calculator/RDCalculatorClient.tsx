@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import InternalCalculatorLinks from "@/app/components/InternalCalculatorLinks";
 import RDForm from "./RDForm";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 export default function RDCalculatorClient() {
   const [forms, setForms] = useState<number[]>([0]);
@@ -15,6 +17,9 @@ export default function RDCalculatorClient() {
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 py-6 space-y-6">
+      <Breadcrumbs
+        items={[{ label: "Home", href: "/" }, { label: "RD Calculator" }]}
+      />
       {/* PAGE H1 */}
       <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         Recurring Deposit (RD) Calculator
@@ -94,6 +99,16 @@ export default function RDCalculatorClient() {
           </p>
         </div>
       </div>
+      <InternalCalculatorLinks
+        links={[
+          {
+            href: "/calculators/fd-calculator",
+            label: "Fixed Deposit Calculator",
+          },
+          { href: "/calculators/sip-calculator", label: "SIP Calculator" },
+          { href: "/calculators/ppf-calculator", label: "PPF Calculator" },
+        ]}
+      />
     </div>
   );
 }

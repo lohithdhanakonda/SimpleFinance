@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
+import InternalCalculatorLinks from "@/app/components/InternalCalculatorLinks";
+import Breadcrumbs from "@/app/components/Breadcrumbs";
 
 /* ---------- Helpers ---------- */
 function formatCurrency(value: number) {
@@ -71,6 +73,9 @@ export default function SWPCalculatorClient() {
                  bg-white border rounded-lg
                  px-4 sm:px-6 py-6 space-y-6"
     >
+      <Breadcrumbs
+        items={[{ label: "Home", href: "/" }, { label: "SWP Calculator" }]}
+      />
       {/* H1 */}
       <h1 className="text-lg sm:text-xl font-semibold text-gray-900">
         SWP Calculator (Systematic Withdrawal Plan)
@@ -120,8 +125,7 @@ export default function SWPCalculatorClient() {
       {/* Expected Returns */}
       <div className="space-y-2">
         <label className="block text-sm font-medium">
-          Expected Annual Returns (%):{" "}
-          <strong>{expectedReturn}%</strong>
+          Expected Annual Returns (%): <strong>{expectedReturn}%</strong>
         </label>
         <Slider
           min={1}
@@ -135,16 +139,16 @@ export default function SWPCalculatorClient() {
       {/* Results */}
       <div className="border-t pt-4 space-y-1 text-sm">
         <p>
-          <strong>Total Withdrawal:</strong>{" "}
-          ₹{formatCurrency(Math.round(result.totalWithdrawn))}
+          <strong>Total Withdrawal:</strong> ₹
+          {formatCurrency(Math.round(result.totalWithdrawn))}
         </p>
         <p>
-          <strong>Remaining Corpus:</strong>{" "}
-          ₹{formatCurrency(Math.round(result.remainingCorpus))}
+          <strong>Remaining Corpus:</strong> ₹
+          {formatCurrency(Math.round(result.remainingCorpus))}
         </p>
         <p>
-          <strong>Net Gain / Loss:</strong>{" "}
-          ₹{formatCurrency(Math.round(result.netGain))}
+          <strong>Net Gain / Loss:</strong> ₹
+          {formatCurrency(Math.round(result.netGain))}
         </p>
       </div>
 
@@ -156,8 +160,8 @@ export default function SWPCalculatorClient() {
 
         <p>
           A Systematic Withdrawal Plan (SWP) allows investors to withdraw a
-          fixed amount regularly from their investment corpus, commonly used
-          for retirement income or regular cash flow.
+          fixed amount regularly from their investment corpus, commonly used for
+          retirement income or regular cash flow.
         </p>
 
         <p>
@@ -166,11 +170,20 @@ export default function SWPCalculatorClient() {
         </p>
 
         <p>
-          This calculator provides indicative results assuming constant
-          returns and monthly withdrawals. Actual outcomes may vary due to
-          market performance.
+          This calculator provides indicative results assuming constant returns
+          and monthly withdrawals. Actual outcomes may vary due to market
+          performance.
         </p>
       </div>
+      <InternalCalculatorLinks
+        links={[
+          { href: "/calculators/sip-calculator", label: "SIP Calculator" },
+          {
+            href: "/calculators/fd-calculator",
+            label: "Fixed Deposit Calculator",
+          },
+        ]}
+      />
     </div>
   );
 }
