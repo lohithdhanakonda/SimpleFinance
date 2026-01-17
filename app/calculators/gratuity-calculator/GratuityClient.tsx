@@ -38,7 +38,7 @@ export default function GratuityCalculatorClient() {
           type="number"
           value={salary}
           onChange={(e) => setSalary(Number(e.target.value))}
-          className="border rounded-md p-2 w-full text-sm"
+          className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
         />
       </div>
 
@@ -51,7 +51,7 @@ export default function GratuityCalculatorClient() {
           type="number"
           value={years}
           onChange={(e) => setYears(Number(e.target.value))}
-          className="border rounded-md p-2 w-full text-sm"
+          className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
         />
       </div>
 

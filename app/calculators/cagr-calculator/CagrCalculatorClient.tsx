@@ -42,7 +42,7 @@ export default function CAGRCalculator() {
             type="number"
             value={initial}
             onChange={(e) => setInitial(Number(e.target.value))}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           />
         </div>
 
@@ -54,7 +54,7 @@ export default function CAGRCalculator() {
             type="number"
             value={final}
             onChange={(e) => setFinal(Number(e.target.value))}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           />
         </div>
 
@@ -66,7 +66,7 @@ export default function CAGRCalculator() {
             type="number"
             value={years}
             onChange={(e) => setYears(Number(e.target.value))}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           />
         </div>
       </div>

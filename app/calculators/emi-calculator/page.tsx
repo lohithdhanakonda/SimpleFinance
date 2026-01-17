@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function EMICalculatorPage() {
-  return <EMICalculator />;
+  return (
+    <div className="px-3 sm:px-6">
+      <EMICalculator />
+    </div>
+  );
 }

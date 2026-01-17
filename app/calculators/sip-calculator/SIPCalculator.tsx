@@ -120,7 +120,7 @@ export default function SIPCalculatorClient() {
             const raw = parseNumber(e.target.value);
             if (!isNaN(raw)) setMonthlyInput(formatCurrency(raw));
           }}
-          className="border rounded-md p-2 w-full text-sm"
+          className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
         />
       </div>
 
@@ -206,7 +206,7 @@ export default function SIPCalculatorClient() {
             <select
               value={stepUpFrequency}
               onChange={(e) => setStepUpFrequency(e.target.value as any)}
-              className="border rounded-md p-2 w-full text-sm"
+              className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
             >
               <option value="monthly">Monthly</option>
               <option value="quarterly">Quarterly</option>

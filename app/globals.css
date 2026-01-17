@@ -14,12 +14,12 @@
 }
 
 /* ---------- Dark Mode ---------- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* @media (prefers-color-scheme: dark) { */
+:root {
+  --background: #fdfcff;
+  --foreground: #171717;
 }
+/* } */
 
 /* ---------- Base ---------- */
 body {
@@ -42,6 +42,8 @@ footer {
   bottom: 0;
   width: 100%;
   z-index: 50;
+  background-color: var(--foreground);
+  color: var(--background);
 }
 
 /* ---------- App Title ---------- */

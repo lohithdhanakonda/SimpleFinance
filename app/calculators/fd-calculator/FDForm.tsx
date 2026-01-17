@@ -112,7 +112,7 @@ export default function FDForm() {
               setAmountInput(formatCurrency(raw));
             }
           }}
-          className="border rounded-md p-2 w-full text-sm"
+          className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
         />
       </div>
 
@@ -126,7 +126,7 @@ export default function FDForm() {
           <select
             value={bank}
             onChange={(e) => setBank(e.target.value)}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           >
             {Banks.map((b: any) => (
               <option key={b.code} value={b.code}>
@@ -139,7 +139,7 @@ export default function FDForm() {
             placeholder="Enter Bank Name"
             value={customBankName}
             onChange={(e) => setCustomBankName(e.target.value)}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           />
         )}
 
@@ -187,7 +187,7 @@ export default function FDForm() {
             type="number"
             value={tenureValue}
             onChange={(e) => setTenureValue(Number(e.target.value))}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           />
         ) : (
           <div className="flex gap-3">
@@ -195,13 +195,13 @@ export default function FDForm() {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="border rounded-md p-2 w-full text-sm"
+              className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
             />
             <input
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="border rounded-md p-2 w-full text-sm"
+              className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
             />
           </div>
         )}

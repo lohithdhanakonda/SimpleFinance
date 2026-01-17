@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function RDCalculatorPage() {
-  return <RDCalculatorClient />;
+  return (
+    <div className="px-3 sm:px-6">
+      <RDCalculatorClient />
+    </div>
+  );
 }

@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function GratuityCalculatorPage() {
-  return <GratuityCalculator />;
+  return (
+    <div className="px-3 sm:px-6">
+      <GratuityCalculator />
+    </div>
+  );
 }

@@ -19,7 +19,7 @@ export default function RootLayout({
       <body>
         <div className="min-h-screen flex flex-col">
           {/* HEADER */}
-          <header className="py-5 bg-gray-700 text-white px-6">
+          <header className="py-3 sm:py-5 bg-gray-700 text-white px-4 sm:px-6">
             <Link href="/" className="inline-block">
               <strong className="text-xl cursor-pointer hover:opacity-90">
                 Bharath Financial
@@ -31,7 +31,7 @@ export default function RootLayout({
           <main className="flex-1 p-6 main-content">{children}</main>
           <Analytics />
           {/* FOOTER */}
-          <footer className="bg-gray-700 text-white text-sm px-6 py-4">
+          <footer className="py-3 text-xs sm:text-sm">
             <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               {/* Disclaimer */}
               <p className="text-center sm:text-left">

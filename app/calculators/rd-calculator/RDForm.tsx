@@ -108,7 +108,7 @@ export default function RDForm() {
             const raw = parseNumber(e.target.value);
             if (!isNaN(raw)) setMonthlyInput(formatCurrency(raw));
           }}
-          className="border rounded-md p-2 w-full text-sm"
+          className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
         />
       </div>
 
@@ -120,7 +120,7 @@ export default function RDForm() {
           <select
             value={bank}
             onChange={(e) => setBank(e.target.value)}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           >
             {Banks.map((b: any) => (
               <option key={b.code} value={b.code}>
@@ -133,7 +133,7 @@ export default function RDForm() {
             placeholder="Enter Bank Name"
             value={customBankName}
             onChange={(e) => setCustomBankName(e.target.value)}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           />
         )}
 
@@ -179,7 +179,7 @@ export default function RDForm() {
             type="number"
             value={tenureValue}
             onChange={(e) => setTenureValue(Number(e.target.value))}
-            className="border rounded-md p-2 w-full text-sm"
+            className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
           />
         ) : (
           <div className="flex flex-col sm:flex-row gap-3">

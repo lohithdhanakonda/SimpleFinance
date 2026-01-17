@@ -67,6 +67,9 @@ export default function Home() {
 
   return (
     <>
+      <h1 className="sr-only">
+        Bharath Financial – Indian Financial Calculators
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
         {menu.map((menuItem) => (
           <Link key={menuItem.name} href={menuItem.navigate}>
@@ -198,6 +201,21 @@ export default function Home() {
             – plan systematic withdrawals from investments.
           </li>
         </ul>
+        <h2 className="text-lg font-semibold text-gray-900">
+          Who should use Bharath Financial?
+        </h2>
+
+        <p>
+          Bharath Financial is designed for Indian users who want quick and
+          reliable estimates for savings, investments, loans, and retirement
+          planning.
+        </p>
+
+        <p>
+          These calculators are useful for salaried professionals, students,
+          freelancers, first-time investors, retirees, and anyone comparing
+          Indian financial products such as SIPs, FDs, RDs, PPF, EMIs, and SWPs.
+        </p>
 
         <h2 className="text-lg font-semibold text-gray-900">
           Why use Bharath Financial?
@@ -214,6 +232,45 @@ export default function Home() {
           Bharath Financial does not require login or personal data and focuses
           on providing transparent calculations with simple explanations.
         </p>
+
+        {/* FAQs Section */}
+        <section className="mt-12 max-w-5xl mx-auto space-y-6 text-sm text-gray-700">
+          <h2 className="text-lg font-semibold text-gray-900">
+            Frequently Asked Questions
+          </h2>
+
+          <div>
+            <h3 className="font-medium text-gray-900">
+              Are these financial calculators accurate?
+            </h3>
+            <p className="mt-1">
+              These calculators provide indicative estimates based on standard
+              financial formulas used in India. Actual returns may vary
+              depending on bank policies, market conditions, and official rate
+              changes.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-medium text-gray-900">
+              Are Bharath Financial calculators free to use?
+            </h3>
+            <p className="mt-1">
+              Yes. All calculators on Bharath Financial are completely free to
+              use and do not require any registration or login.
+            </p>
+          </div>
+
+          <div>
+            <h3 className="font-medium text-gray-900">
+              Does this site store my financial data?
+            </h3>
+            <p className="mt-1">
+              No personal or financial data is stored. All calculations are
+              performed locally in your browser for privacy and security.
+            </p>
+          </div>
+        </section>
       </section>
     </>
   );

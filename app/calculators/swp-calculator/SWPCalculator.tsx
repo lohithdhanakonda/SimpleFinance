@@ -91,7 +91,7 @@ export default function SWPCalculatorClient() {
           onChange={(e) =>
             setInvestmentInput(formatCurrency(parseNumber(e.target.value)))
           }
-          className="border rounded-md p-2 w-full text-sm"
+          className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
         />
       </div>
 
@@ -105,7 +105,7 @@ export default function SWPCalculatorClient() {
           onChange={(e) =>
             setWithdrawalInput(formatCurrency(parseNumber(e.target.value)))
           }
-          className="border rounded-md p-2 w-full text-sm"
+          className="border rounded-md p-2 sm:p-3 w-full text-sm sm:text-base"
         />
       </div>
 

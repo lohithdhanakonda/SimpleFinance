@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function SWPCalculatorPage() {
-  return <SWPCalculatorClient />;
+  return (
+    <div className="px-3 sm:px-6">
+      <SWPCalculatorClient />
+    </div>
+  );
 }

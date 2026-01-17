@@ -8,5 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PPFCalculator />;
+  return (
+    <div className="px-3 sm:px-6">
+      <PPFCalculator />
+    </div>
+  );
 }

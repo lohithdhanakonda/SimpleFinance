@@ -8,6 +8,9 @@ export const metadata: Metadata = {
 };
 
 export default function CAGRCalculatorPage() {
-  return <CAGRCalculator />;
-
+  return (
+    <div className="px-3 sm:px-6">
+      <CAGRCalculator />
+    </div>
+  );
 }
