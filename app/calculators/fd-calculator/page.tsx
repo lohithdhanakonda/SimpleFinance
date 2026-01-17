@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import RDForm from "./RDForm";
+import FDForm from "./FDForm";
 
-export default function RDCalculator() {
+export default function FDCalculator() {
   const [forms, setForms] = useState<number[]>([0]);
 
   const addForm = () => {
@@ -29,9 +29,10 @@ export default function RDCalculator() {
       {/* Rates disclaimer */}
       <div className="text-sm text-gray-600 bg-gray-50 border rounded-md p-3">
         <strong>Note on interest rates:</strong>{" "}
-        Interest rates shown are indicative and based on publicly available
-        information. Rates may change or vary across branches. Use the slider or
-        input field to adjust the interest rate based on your assumptions.
+        Fixed Deposit interest rates shown are indicative and based on publicly
+        available information. Actual rates may vary based on tenure, payout
+        option, and bank policies. Use the slider or input field to adjust the
+        interest rate based on your assumptions.
       </div>
 
       {/* Forms */}
@@ -41,7 +42,7 @@ export default function RDCalculator() {
         }`}
       >
         {forms.map((id) => (
-          <RDForm key={id} />
+          <FDForm key={id} />
         ))}
       </div>
     </div>

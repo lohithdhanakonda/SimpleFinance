@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import TextConstants from "./constants/textConstants";
+import TextConstants from "./config/constants/textConstants";
 
 import rd from "../public/assets/images/rd.png";
 import fd from "../public/assets/images/fd.png";
@@ -10,6 +10,7 @@ import cagr from "../public/assets/images/cagr.png";
 import gratuity from "../public/assets/images/gratuity.png";
 import emi from "../public/assets/images/emi.png";
 import sip from "../public/assets/images/sip.png";
+import ppf from "../public/assets/images/ppf.png";
 
 export default function Home() {
   const menu = [
@@ -36,6 +37,12 @@ export default function Home() {
       name: "EMI Calculator",
       icon: emi,
       id: "emi",
+    },
+    {
+      navigate: "/calculators/ppf-calculator",
+      name: "PPF Calculator",
+      icon: ppf,
+      id: "ppf",
     },
     {
       navigate: "/calculators/cagr-calculator",

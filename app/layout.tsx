@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import TextConstants from "./constants/textConstants";
+import TextConstants from "./config/constants/textConstants";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,23 +21,27 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html>
       <body>
         <div className="min-h-screen flex flex-col">
           {/* HEADER */}
           <header className="py-5 bg-gray-700 text-white px-6">
-            <strong className="text-xl">{TextConstants.title}</strong>
+            <Link href="/" className="inline-block">
+              <strong className="text-xl cursor-pointer hover:opacity-90">
+                {TextConstants.title}
+              </strong>
+            </Link>
           </header>
 
           {/* MAIN CONTENT */}
           <main className="flex-1 p-6 main-content">{children}</main>
 
           {/* FOOTER */}
-          <footer className="py-5 bg-gray-700 text-center text-white text-sm px-6">
+          <footer className="py-3 bg-gray-700 text-center text-white text-sm px-6">
             <strong>Disclaimer:</strong> This site provides financial
             calculators for understanding and planning. Results are indicative.
             Please verify details with official sources before acting.
